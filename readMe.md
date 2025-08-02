@@ -44,3 +44,11 @@ Inspired by the tool described in:
 - Python 3.10+
 - CUDA-enabled GPU (recommended for training)
 - Git, pip
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Adith1207/douMentor.git
+cd douMentor
+pip install -r requirements.txt
+```
