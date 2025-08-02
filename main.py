@@ -1,8 +1,8 @@
 from CodeScribe.comment_generator import generate_comment
 
 def main():
-    input_path = "examples/sample_code.py"
-    output_path = "examples/sample_code_commented.py"
+    input_path = "Examples/sample.py"
+    output_path = "Examples/sample_commented.py"
 
     # Read sample code
     with open(input_path, "r") as f:

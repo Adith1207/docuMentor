@@ -14,8 +14,12 @@ def generate_comment(code_snippet):
     """
     prompt = get_comment_prompt(code_snippet)
 
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",  # Use your own local model if needed
+    # Create ChatCompletion client
+    chat = openai.ChatCompletion()
+
+    # Call the API
+    response = chat.create(
+        model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.2,
     )
