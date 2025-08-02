@@ -1,36 +1,24 @@
-# comment_generator.py
-
 import os
+from huggingface_hub import InferenceClient
 from .prompt_templates import get_comment_prompt
 
+hf_token = os.getenv("HUGGINGFACE_API_TOKEN")
+client = InferenceClient(token=hf_token)
 
-# Option 1: Using OpenAI (or switch to HuggingFace later)
-import openai
-openai.api_key = os.getenv("OPENAI_API_KEY")  # Ensure it's set in your environment
-
-def generate_comment(code_snippet):
-    """
-    Sends code to LLM with prompt and returns commented code.
-    """
+def generate_comment(code_snippet: str) -> str:
     prompt = get_comment_prompt(code_snippet)
 
-    # Create ChatCompletion client
-    chat = openai.ChatCompletion()
+    # Example using google/flan-t5-base or any text2text model
+    model_id = "google/flan-t5-base"
 
-    # Call the API
-    response = chat.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.2,
+    response = client.text_generation(
+        model=model_id,
+        inputs=prompt,
+        parameters={"max_new_tokens": 512, "temperature": 0.2}
     )
+    return response[0]['generated_text'].strip()
 
-    return response.choices[0].message.content.strip()
-
-
-def comment_file(file_path):
-    """
-    Reads a .py file, adds comments, saves new file.
-    """
+def comment_file(file_path: str) -> None:
     with open(file_path, "r") as f:
         original_code = f.read()
 
