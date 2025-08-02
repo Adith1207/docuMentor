@@ -8,14 +8,11 @@ client = InferenceClient(token=hf_token)
 def generate_comment(code_snippet: str) -> str:
     prompt = get_comment_prompt(code_snippet)
 
-    # Example using google/flan-t5-base or any text2text model
-    model_id = "google/flan-t5-base"
+    model_id = "facebook/opt-1.3b"  # An open source code generation model available on HF inference API
 
-    response = client.text_generation(
-        model=model_id,
-        inputs=prompt,
-        parameters={"max_new_tokens": 512, "temperature": 0.2}
-    )
+
+    response = client.text_generation(prompt, model=model_id)
+
     return response[0]['generated_text'].strip()
 
 def comment_file(file_path: str) -> None:
