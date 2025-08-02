@@ -36,3 +36,11 @@ Inspired by the tool described in:
 - Can be extended to other languages in future
 
 ---
+
+## 🛠️ Installation
+
+### Prerequisites
+
+- Python 3.10+
+- CUDA-enabled GPU (recommended for training)
+- Git, pip
