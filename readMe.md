@@ -11,3 +11,28 @@
 - 🔐 **Privacy-first:** No cloud dependencies. Everything runs locally.
 
 ---
+
+## 📚 Project Modules
+
+### 1. LocalRQA: Local Retrieval-Augmented QA
+
+Based on the paper:  
+**"LocalRQA: From Generating Data to Locally Training, Testing, and Deploying Retrieval-Augmented QA Systems"**  
+📎 [ACL Anthology](https://aclanthology.org/2024.acl-demos.14/) | [arXiv PDF](https://arxiv.org/pdf/2403.00982.pdf)
+
+- Generates synthetic ⟨question, answer, passage⟩ triples from your documents
+- Trains local retriever and generator models (e.g., ColBERTv2, LLaMA)
+- Evaluates performance via automated metrics
+- Fully deployable QA pipeline that works on PDFs, TXT, or HTML
+
+### 2. CodeScribe: AI-based Code Commenter
+
+Inspired by the tool described in:  
+**"Leveraging Large Language Models for Code Translation and Software Development in Scientific Computing"**  
+📎 [arXiv Link](https://arxiv.org/abs/2410.24119)
+
+- Annotates Python files with function-level comments
+- Uses custom prompt templates to maintain context
+- Can be extended to other languages in future
+
+---
