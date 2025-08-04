@@ -48,7 +48,7 @@ Inspired by the tool described in:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Adith1207/douMentor.git
-cd douMentor
+git clone https://github.com/Adith1207/docuMentor.git
+cd docuMentor
 pip install -r requirements.txt
 ```
