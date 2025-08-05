@@ -1,5 +1,8 @@
-transformers
 sentence-transformers
 faiss-cpu
-gradio
+transformers==4.39.3
+bitsandbytes==0.43.1
+accelerate==0.29.3
 torch
+gradio
+scikit-learn
