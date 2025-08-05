@@ -1,3 +1,4 @@
 query,output,timestamp
 explain function greet,"print(name): print(f""Hello, name!"") greet(""Alice"")",2025-08-02 18:40:14.912769
 factorial of 5 ,result,2025-08-05 22:52:30.283133
+How does the factorial function work?,,2025-08-06 01:35:49.283025

@@ -5,7 +5,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from sentence_transformers import SentenceTransformer
 
 # Load the sentence transformer for embeddings
-embedder = SentenceTransformer("all-MiniLM-L6-v2")
+embedder = SentenceTransformer("microsoft/codebert-base")
 
 # Load FAISS index and corresponding texts
 index = faiss.read_index("embeddings/code.index")
