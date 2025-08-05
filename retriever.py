@@ -4,7 +4,9 @@ import pickle
 from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-embedder = SentenceTransformer("all-MiniLM-L6-v2")
+embedder = SentenceTransformer("microsoft/codebert-base")
+
+
 
 def load_documents(folder="data"):
     docs = []
