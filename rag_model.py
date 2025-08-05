@@ -1,7 +1,7 @@
 import pickle
 import faiss
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from sentence_transformers import SentenceTransformer
 
 # Load the sentence transformer for embeddings
@@ -12,20 +12,12 @@ index = faiss.read_index("embeddings/code.index")
 with open("embeddings/texts.pkl", "rb") as f:
     texts, sources = pickle.load(f)
 
-# Quantization config to run phi-2 on low RAM
-nf4_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_compute_dtype=torch.bfloat16
-)
-
-# Load phi-2 tokenizer and model
+# Load phi-2 tokenizer and model (no quantization, CPU-friendly)
 tokenizer = AutoTokenizer.from_pretrained("microsoft/phi-2", trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(
     "microsoft/phi-2",
-    device_map="auto",  # auto places on CPU/GPU
-    quantization_config=nf4_config,
+    device_map="cpu",   # Force everything to CPU
+    torch_dtype=torch.float32,  # Use default float precision
     trust_remote_code=True
 )
 
@@ -46,7 +38,7 @@ def answer_query(query):
         f"Question: {query}\n\nAnswer:"
     )
 
-    inputs = tokenizer(prompt, return_tensors="pt", truncation=True).to(model.device)
+    inputs = tokenizer(prompt, return_tensors="pt", truncation=True).to("cpu")
 
     outputs = model.generate(
         **inputs,
@@ -58,7 +50,7 @@ def answer_query(query):
 
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-    # Extract only answer portion
+    # Extract only the answer portion
     answer_start = response.find("Answer:") + len("Answer:")
     return response[answer_start:].strip()
 
