@@ -1,0 +1,12 @@
+Python is a high-level, interpreted programming language known for its readability and flexibility. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.
+
+The print() function is used to display output in the console. Python uses indentation (spaces or tabs) to define code blocks.
+
+Here is a simple example:
+
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")
+
+Python is widely used for web development, data science, automation, and AI applications.

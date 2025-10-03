@@ -1,0 +1,10 @@
+sentence-transformers
+faiss-cpu
+transformers==4.39.3
+torch
+accelerate
+gradio
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
