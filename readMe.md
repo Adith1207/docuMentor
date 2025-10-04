@@ -55,15 +55,19 @@ pip install -r requirements.txt
 ```
 
 ### Backend setup
-
+```bash
 cd backend
 pip install -r requirements.txt
+```
 
 ### frontend setup
 
+```bash
 cd ../frontend
 npm install # or yarn install
 npm run dev # start development server
+```
+
 
 ## ⚡ Usage
 
