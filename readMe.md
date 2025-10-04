@@ -81,11 +81,10 @@ npm run dev # start development server
 
 We welcome contributions! You can:
 
--Report issues or bugs
-
+- Report issues or bugs
 - Suggest new features
 - Contribute to additional language support
-  -Improve evaluation scripts
+- Improve evaluation scripts
 
 ## 📜 License
 
