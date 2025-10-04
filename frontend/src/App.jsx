@@ -118,7 +118,7 @@ const App = () => {
   };
 
   const clearEmbeddings = () => {
-    alert('Please delete the contents of the "embeddings/" folder manually to clear embeddings.');
+    window.location.reload()
   };
 
   const askQuestion = async () => {

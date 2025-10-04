@@ -14,43 +14,27 @@ Code:
 ```python
 {code}
 """
+def _extract_python_code(text: str) -> str:
+    """Extract only the Python code block from the model's output."""
+    if "```python" in text:
+        s = text.split("```python", 1)[1]
+        if "```" in s:
+            s = s.split("```", 1)[0]
+        return s.strip()
+    return text.strip()
+
+
 def generate_comment(code_snippet: str, max_tokens: int = 512) -> str:
-    """Generate commented Python code from a given snippet."""
-    tokenizer, model = Models.generator()
+    """Generate commented Python code from a given snippet using Gemini only."""
     prompt = COMMENT_PROMPT_TEMPLATE.format(code=code_snippet)
 
-    # Prepare input
-    inputs = tokenizer(prompt, return_tensors='pt', truncation=True).to(model.device)
-
-    # Generate output
-    outputs = model.generate(
-        **inputs,
-        max_new_tokens=max_tokens,
-        do_sample=False,
-        pad_token_id=tokenizer.eos_token_id
-    )
-
-    # Decode text
-    text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-
-    # Extract only Python code block
-    result = ""
-    if "```python" in text:
-        s = text.split("```python")[-1]
-        if "```" in s:
-            s = s.split("```")[0]
-        result = s.strip()
-    else:
-        # Fallback: keep only Python-like lines
-        lines = text.splitlines()
-        result = "\n".join(
-            line for line in lines
-            if line.strip().startswith(("def", "class", "#", "\"\"\"", "import", "from"))
-            or line.strip() == "" or line.startswith("    ")
-        ).strip()
-
-    # Final safeguard
-    if not result:
-        result = code_snippet  # fallback to original code if model fails
-
-    return result
+    try:
+        text = Models.generate_gemini(prompt, max_tokens)
+        result = _extract_python_code(text)
+        if result:
+            return result
+        return text.strip() or code_snippet
+    except Exception as e:
+        print(f"[CommentGenerator] Gemini failed: {e}")
+        # Fallback: return original code if Gemini not available
+        return code_snippet
