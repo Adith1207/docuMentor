@@ -67,6 +67,13 @@ npm run dev # start development server
 
 ## ⚡ Usage
 
+### SnapShots:
+
+![Alt text](./Sample_Img/WhatsApp%20Image%202025-10-04%20at%209.49.32%20AM.jpeg)
+![Alt text](./Sample_Img/WhatsApp%20Image%202025-10-04%20at%209.49.33%20AM.jpeg)
+![Alt text](<./Sample_Img/WhatsApp%20Image%202025-10-04%20at%209.49.34%20AM%20(1).jpeg>)
+![Alt text](./Sample_Img/WhatsApp%20Image%202025-10-04%20at%209.49.34%20AM.jpeg)
+
 ### 1. LocalRQA: Ask Questions on Documents
 
 - Supports PDF, TXT, HTML
