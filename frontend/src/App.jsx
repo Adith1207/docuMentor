@@ -157,7 +157,7 @@ const App = () => {
               <Sparkles size={28} />
             </div>
             <div className="header-text">
-              <h1>AI Code Assistant</h1>
+              <h1>DocuMENTOR — AI That Stays With You.</h1>
               <p>CodeScribe & LocalRQA Platform</p>
             </div>
           </div>
