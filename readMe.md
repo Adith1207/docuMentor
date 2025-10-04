@@ -42,8 +42,9 @@ Inspired by the tool described in:
 ### Prerequisites
 
 - Python 3.10+
-- CUDA-enabled GPU (recommended for training)
-- Git, pip
+- Node.js & npm/yarn (for frontend)
+- CUDA-enabled GPU (optional, for model training)
+- Git
 
 ### Clone the Repository
 
@@ -52,3 +53,40 @@ git clone https://github.com/Adith1207/docuMentor.git
 cd docuMentor
 pip install -r requirements.txt
 ```
+
+### Backend setup
+
+cd backend
+pip install -r requirements.txt
+
+### frontend setup
+
+cd ../frontend
+npm install # or yarn install
+npm run dev # start development server
+
+## ⚡ Usage
+
+### 1. LocalRQA: Ask Questions on Documents
+
+- Supports PDF, TXT, HTML
+- Returns answer and source passage
+
+### 2. CodeScribe: Comment Python Code
+
+- Automatically adds function-level and inline comments
+- Optionally supports batch commenting for multiple files
+
+## 🤝 Contributing
+
+We welcome contributions! You can:
+
+-Report issues or bugs
+
+- Suggest new features
+- Contribute to additional language support
+  -Improve evaluation scripts
+
+## 📜 License
+
+docuMentor is licensed under the MIT License — free for academic and commercial
