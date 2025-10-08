@@ -100,3 +100,7 @@ We welcome contributions! You can:
 ## 📜 License
 
 docuMentor is licensed under the MIT License — free for academic and commercial
+
+## 📺 Implementation Demo Video
+
+▶️ YouTube - https://youtu.be/B6GYpFTyMNo
